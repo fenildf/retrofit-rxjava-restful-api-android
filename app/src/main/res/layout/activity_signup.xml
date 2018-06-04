@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.SignupActivity">
+
+    <RelativeLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llEdt"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <co.tpcreative.common.ui.FontEditText
+                android:textSize="18sp"
+                style="@style/brandonregEditText"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/edtName"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:hint="@string/txtInputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <co.tpcreative.common.ui.FontEditText
+                android:textSize="18sp"
+                style="@style/brandonregEditText"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:inputType="textEmailAddress"
+                android:id="@+id/edtEmail"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:hint="@string/txtInputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <co.tpcreative.common.ui.FontEditText
+                android:textSize="18sp"
+                style="@style/brandonregEditText"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:inputType="textPassword"
+                android:id="@+id/edtPassword"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:hint="@string/txtInputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_below="@+id/llEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.tpcreative.common.ui.FontButton
+                android:id="@+id/btnSignIn"
+                android:layout_marginRight="10dp"
+                style="@style/brandonbldButton"
+                app:spacings="1"
+                android:text="@string/lbSignIn"
+                android:background="@drawable/bg_button"
+                android:layout_width="wrap_content"
+                android:textColor="@color/color_white"
+                android:layout_height="40dp"  />
+            <co.tpcreative.common.ui.FontButton
+                android:id="@+id/btnSignUp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_button"
+                app:spacings="1"
+                style="@style/brandonbldButton"
+                android:text="@string/lbSignUp"
+                android:textColor="@color/color_white"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/progressBar"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

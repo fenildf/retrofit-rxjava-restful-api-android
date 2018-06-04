@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">retrofit-rxjava-restful api-android</string>
+    <string name="txtInputName">Input name</string>
+    <string name="txtInputEmail">Input email</string>
+    <string name="txtInputPassword">Input password</string>
+    <string name="lbSignInPage">SignIn Page</string>
+    <string name="lbSignUpPage">SignUp Page</string>
+    <string name="lbHomePage">Home Page</string>
+    <string name="lbSignIn">SignIn</string>
+    <string name="lbSignUp">SignUp</string>
+    <string name="lbnotyet">I don\'t have an account</string>
+    <string name="lbLogOut">Log out</string>
+
 </resources>
