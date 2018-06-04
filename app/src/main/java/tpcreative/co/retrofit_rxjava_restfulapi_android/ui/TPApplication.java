@@ -1,4 +1,4 @@
-package tpcreative.co.retrofit_rxjava_restfulapi_android;
+package tpcreative.co.retrofit_rxjava_restfulapi_android.ui;
 
 import android.app.Activity;
 import android.app.Application;

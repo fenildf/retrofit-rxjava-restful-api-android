@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.SigninActivity">
+    tools:context=".ui.user.SigninActivity">
 
     <RelativeLayout
         app:layout_constraintBottom_toBottomOf="parent"

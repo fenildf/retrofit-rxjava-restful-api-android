@@ -11,11 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".TPApplication"
+        android:name=".ui.TPApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".user.SigninActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/lbSignInPage">
+        <activity android:name=".ui.user.SigninActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +23,7 @@
         <activity android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
             android:label="@string/lbHomePage"/>
-        <activity android:name=".user.SignupActivity"
+        <activity android:name=".ui.user.SignupActivity"
             android:screenOrientation="portrait"
             android:label="@string/lbSignUp"></activity>
     </application>

@@ -1,7 +1,6 @@
-package tpcreative.co.retrofit_rxjava_restfulapi_android.user;
+package tpcreative.co.retrofit_rxjava_restfulapi_android.ui.user;
 import android.content.Context;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -12,63 +11,66 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import co.tpcreative.common.activity.BaseActivity;
-import co.tpcreative.common.ui.FontButton;
 import co.tpcreative.common.ui.FontEditText;
 import tpcreative.co.retrofit_rxjava_restfulapi_android.R;
+import tpcreative.co.retrofit_rxjava_restfulapi_android.common.Navigator;
 import tpcreative.co.retrofit_rxjava_restfulapi_android.common.request.RegisterRequest;
+import tpcreative.co.retrofit_rxjava_restfulapi_android.model.User;
 
-public class SignupActivity extends BaseActivity implements UserView {
+public class SigninActivity extends BaseActivity implements UserView {
 
+    private UserPresenter presenter;
     private ActionBar actionBar;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    private UserPresenter presenter;
     @BindView(R.id.edtEmail)
     FontEditText edtEmail;
     @BindView(R.id.edtPassword)
     FontEditText edtPassword;
-    @BindView(R.id.edtName)
-    FontEditText edtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
-        setChangeFontTitle(getResources().getString(R.string.lbSignUp));
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_signin);
+        setChangeFontTitle(getResources().getString(R.string.lbSignIn));
+
+        /*Declare UserPresenter*/
         presenter = new UserPresenter();
         presenter.bindView(this);
-
     }
 
     @OnClick(R.id.btnSignUp)
     public void onClickSignUp(){
-        if (!edtEmail.getText().toString().equals("") && !edtPassword.getText().toString().equals("") && !edtName.getText().toString().equals("")){
+        Navigator.startSignUp(this);
+    }
+
+    @OnClick(R.id.btnSignIn)
+    public void onClickSignIn(){
+        if (!edtEmail.getText().toString().equals("") && !edtPassword.getText().toString().equals("")){
             RegisterRequest registerRequest = new RegisterRequest();
             registerRequest.email = edtEmail.getText().toString();
             registerRequest.password = edtPassword.getText().toString();
-            registerRequest.name = edtName.getText().toString();
-            presenter.onSignUp(registerRequest);
+            presenter.onSignIn(registerRequest);
         }
     }
 
     @Override
     public void signUpSuccessful(String message) {
-        Toast.makeText(SignupActivity.this,message,Toast.LENGTH_SHORT).show();
-        finish();
-    }
 
+    }
 
     @Override
     public void signInSuccessful(String message) {
-
-    }
-
-    @OnClick(R.id.btnSignIn)
-    public void onClickSignIn(){
+        Toast.makeText(SigninActivity.this,message,Toast.LENGTH_SHORT).show();
+        Navigator.startHome(this,presenter.user);
         finish();
     }
+
+    @Override
+    public void errorOccurred(String message) {
+        Toast.makeText(SigninActivity.this,message,Toast.LENGTH_SHORT).show();
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -99,11 +101,6 @@ public class SignupActivity extends BaseActivity implements UserView {
     @Override
     public void showObjects(Object o) {
 
-    }
-
-    @Override
-    public void errorOccurred(String message) {
-        Toast.makeText(SignupActivity.this,message,Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package tpcreative.co.retrofit_rxjava_restfulapi_android.user;
+package tpcreative.co.retrofit_rxjava_restfulapi_android.ui.user;
 import android.util.Log;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -10,13 +10,19 @@ import co.tpcreative.common.utils.NetworkUtil;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
-import tpcreative.co.retrofit_rxjava_restfulapi_android.TPApplication;
+import tpcreative.co.retrofit_rxjava_restfulapi_android.model.User;
+import tpcreative.co.retrofit_rxjava_restfulapi_android.ui.TPApplication;
 import tpcreative.co.retrofit_rxjava_restfulapi_android.common.request.RegisterRequest;
 import okhttp3.ResponseBody;
 
 public class UserPresenter extends Presenter<UserView>{
 
     public static final String TAG = UserPresenter.class.getSimpleName();
+    protected User user;
+
+    public UserPresenter(){
+        user = new User();
+    }
 
     public void onSignUp(RegisterRequest request){
         Log.d(TAG,"info");
@@ -102,6 +108,7 @@ public class UserPresenter extends Presenter<UserView>{
                         view.errorOccurred(onResponse.message);
                     }
                     else{
+                        user = onResponse.user;
                         view.signInSuccessful(onResponse.message);
                     }
                     Log.d(TAG, "Body : " + new Gson().toJson(onResponse));
